@@ -1,4 +1,4 @@
-package de.tonypsilon.rankifyapp.views;
+package de.tonypsilon.rankifyapp.adapter.in.views;
 
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Paragraph;
@@ -13,7 +13,7 @@ public class HomeView extends VerticalLayout {
         add(new H1("Welcome to your new application"));
         add(new Paragraph("This is the home view"));
 
-        add(new Paragraph("You can edit this view in src/main/java/de/tonypsilon/rankifyapp/views/HomeView.java"));
+        add(new Paragraph("You can edit this view in src/main/java/de/tonypsilon/rankifyapp/adapter/in/views/HomeView.java"));
 
     }
 }
