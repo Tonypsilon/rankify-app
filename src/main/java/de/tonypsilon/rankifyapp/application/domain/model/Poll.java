@@ -10,21 +10,15 @@ public class Poll {
 
     private final List<Vote> votes;
     private final List<Option> options;
+    private final String name;
     private final String encryptedMasterSecret;
 
-    public Poll(@Nonnull List<Option> options,
-                @Nonnull String encryptedMasterSecret) {
-        Objects.requireNonNull(options);
-        Objects.requireNonNull(encryptedMasterSecret);
-        if(options.isEmpty()) {
-            throw new IllegalArgumentException("Poll must have at least one option!");
-        }
-        if(encryptedMasterSecret.isBlank()) {
-            throw new IllegalArgumentException("Master secret must not be blank!");
-        }
+    public Poll(@Nonnull CreatePollData createPollData) {
+        Objects.requireNonNull(createPollData, "InputData must not be null!");
         this.votes = new ArrayList<>();
-        this.options = Collections.unmodifiableList(options);
-        this.encryptedMasterSecret = encryptedMasterSecret;
+        this.name = createPollData.name();
+        this.options = Collections.unmodifiableList(createPollData.options());
+        this.encryptedMasterSecret = createPollData.encryptedMasterSecret();
     }
 
     public void addVote(Vote vote) {
@@ -41,5 +35,9 @@ public class Poll {
 
     public boolean isEncryptedMasterSecret(String otherEncryptedMasterSecret) {
         return encryptedMasterSecret.equals(otherEncryptedMasterSecret);
+    }
+
+    public String getName() {
+        return name;
     }
 }
