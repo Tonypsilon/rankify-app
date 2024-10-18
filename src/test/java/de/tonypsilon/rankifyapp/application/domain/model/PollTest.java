@@ -6,6 +6,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.mockito.Mockito.mock;
 
 class PollTest {
 
@@ -19,11 +20,11 @@ class PollTest {
 
     @Test
     void testVotesUnmodifiable() {
-        Vote vote = new Vote();
+        Vote vote = mock(Vote.class);
         Poll poll = new Poll(new CreatePollData(List.of(new Option("option")), "name", "abc"));
         poll.addVote(vote);
         assertThatExceptionOfType(UnsupportedOperationException.class)
-                .isThrownBy(() -> poll.getVotes().add(new Vote()));
+                .isThrownBy(() -> poll.getVotes().add(mock(Vote.class)));
     }
 
     @Test

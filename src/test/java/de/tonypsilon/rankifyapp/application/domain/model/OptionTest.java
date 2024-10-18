@@ -19,6 +19,7 @@ class OptionTest {
     @Test
     void shouldNotAllowBlankName() {
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new Option(""));
+                .isThrownBy(() -> new Option(""))
+                .withMessage("Option name must not be blank!");
     }
 }

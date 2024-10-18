@@ -7,7 +7,7 @@ public record Option(@Nonnull String name) {
     public Option {
         Objects.requireNonNull(name);
         if (name.isBlank()) {
-            throw new IllegalArgumentException("Option name must not be null or blank");
+            throw new IllegalArgumentException("Option name must not be blank!");
         }
     }
 }
